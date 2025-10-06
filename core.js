@@ -60,7 +60,7 @@ const add_css_file = path =>
 	document.head.appendChild(e_css);
 };
 
-add_css_file('/styles.css');
+add_css_file('./styles.css');
 
 
 
@@ -85,70 +85,70 @@ const galleries = [
 	{
 		name: 'Patio Covers', name_es: 'Cubiertas de Patio',
 		images: [
-			{ src: '/resources/images/business/work/patio_covers/work-patio-cover-01.webp', name: '', desc: '' },
-			{ src: '/resources/images/business/work/patio_covers/work-patio-cover-02.webp', name: '', desc: '' },
-			{ src: '/resources/images/business/work/patio_covers/work-patio-cover-03.webp', name: '', desc: '' },
-			{ src: '/resources/images/business/work/patio_covers/work-patio-cover-04.webp', name: '', desc: '' },
-			{ src: '/resources/images/business/work/patio_covers/work-patio-cover-05.webp', name: '', desc: '' },
-			{ src: '/resources/images/business/work/patio_covers/work-patio-cover-06.webp', name: '', desc: '' },
-			{ src: '/resources/images/business/work/patio_covers/work-patio-cover-07.webp', name: '', desc: '' },
+			{ src: './resources/images/business/work/patio_covers/work-patio-cover-01.webp', name: '', desc: '' },
+			{ src: './resources/images/business/work/patio_covers/work-patio-cover-02.webp', name: '', desc: '' },
+			{ src: './resources/images/business/work/patio_covers/work-patio-cover-03.webp', name: '', desc: '' },
+			{ src: './resources/images/business/work/patio_covers/work-patio-cover-04.webp', name: '', desc: '' },
+			{ src: './resources/images/business/work/patio_covers/work-patio-cover-05.webp', name: '', desc: '' },
+			{ src: './resources/images/business/work/patio_covers/work-patio-cover-06.webp', name: '', desc: '' },
+			{ src: './resources/images/business/work/patio_covers/work-patio-cover-07.webp', name: '', desc: '' },
 		]
 	},
 	{
 		name: 'Stone Kitchens', name_es: 'Cocinas de Piedra',
 		images: [
-			{ src: '/resources/images/business/work/kitchens/work-kitchen-01.webp', name: '', desc: '' },
-			{ src: '/resources/images/business/work/kitchens/work-kitchen-02.webp', name: '', desc: '' },
-			{ src: '/resources/images/business/work/kitchens/work-kitchen-03.webp', name: '', desc: '' },
-			{ src: '/resources/images/business/work/kitchens/work-kitchen-04.webp', name: '', desc: '' },
-			{ src: '/resources/images/business/work/kitchens/work-kitchen-05.webp', name: '', desc: '' },
-			{ src: '/resources/images/business/work/kitchens/work-kitchen-06.webp', name: '', desc: '' },
-			{ src: '/resources/images/business/work/kitchens/work-kitchen-07.webp', name: '', desc: '' },
+			{ src: './resources/images/business/work/kitchens/work-kitchen-01.webp', name: '', desc: '' },
+			{ src: './resources/images/business/work/kitchens/work-kitchen-02.webp', name: '', desc: '' },
+			{ src: './resources/images/business/work/kitchens/work-kitchen-03.webp', name: '', desc: '' },
+			{ src: './resources/images/business/work/kitchens/work-kitchen-04.webp', name: '', desc: '' },
+			{ src: './resources/images/business/work/kitchens/work-kitchen-05.webp', name: '', desc: '' },
+			{ src: './resources/images/business/work/kitchens/work-kitchen-06.webp', name: '', desc: '' },
+			{ src: './resources/images/business/work/kitchens/work-kitchen-07.webp', name: '', desc: '' },
 		]
 	},
 	{
 		name: 'Flagstone Patios', name_es: 'Patios de Losas',
 		images: [
-			{ src: '/resources/images/business/work/flagstone_patio/work-flagstone-patio-01.webp', name: '', desc: '' },
-			{ src: '/resources/images/business/work/flagstone_patio/work-flagstone-patio-02.webp', name: '', desc: '' },
-			{ src: '/resources/images/business/work/flagstone_patio/work-flagstone-patio-03.webp', name: '', desc: '' },
-			{ src: '/resources/images/business/work/flagstone_patio/work-flagstone-patio-04.webp', name: '', desc: '' },
-			{ src: '/resources/images/business/work/flagstone_patio/work-flagstone-patio-05.webp', name: '', desc: '' },
-			{ src: '/resources/images/business/work/flagstone_patio/work-flagstone-patio-06.webp', name: '', desc: '' },
-			{ src: '/resources/images/business/work/flagstone_patio/work-flagstone-patio-07.webp', name: '', desc: '' },
-			{ src: '/resources/images/business/work/flagstone_patio/work-flagstone-patio-08.webp', name: '', desc: '' },
-			{ src: '/resources/images/business/work/flagstone_patio/work-flagstone-patio-09.webp', name: '', desc: '' },
-			{ src: '/resources/images/business/work/flagstone_patio/work-flagstone-patio-10.webp', name: '', desc: '' },
+			{ src: './resources/images/business/work/flagstone_patio/work-flagstone-patio-01.webp', name: '', desc: '' },
+			{ src: './resources/images/business/work/flagstone_patio/work-flagstone-patio-02.webp', name: '', desc: '' },
+			{ src: './resources/images/business/work/flagstone_patio/work-flagstone-patio-03.webp', name: '', desc: '' },
+			{ src: './resources/images/business/work/flagstone_patio/work-flagstone-patio-04.webp', name: '', desc: '' },
+			{ src: './resources/images/business/work/flagstone_patio/work-flagstone-patio-05.webp', name: '', desc: '' },
+			{ src: './resources/images/business/work/flagstone_patio/work-flagstone-patio-06.webp', name: '', desc: '' },
+			{ src: './resources/images/business/work/flagstone_patio/work-flagstone-patio-07.webp', name: '', desc: '' },
+			{ src: './resources/images/business/work/flagstone_patio/work-flagstone-patio-08.webp', name: '', desc: '' },
+			{ src: './resources/images/business/work/flagstone_patio/work-flagstone-patio-09.webp', name: '', desc: '' },
+			{ src: './resources/images/business/work/flagstone_patio/work-flagstone-patio-10.webp', name: '', desc: '' },
 		]
 	},
 	{
 		name: 'Masonry Fireplaces', name_es: 'Chimeneas de Mampostería',
 		images: [
-			{ src: '/resources/images/business/work/fireplace/work-fireplace-01.webp', name: '', desc: '' },
-			{ src: '/resources/images/business/work/fireplace/work-fireplace-02.webp', name: '', desc: '' },
-			{ src: '/resources/images/business/work/fireplace/work-fireplace-03.webp', name: '', desc: '' },
-			{ src: '/resources/images/business/work/fireplace/work-fireplace-04.webp', name: '', desc: '' },
-			{ src: '/resources/images/business/work/fireplace/work-fireplace-05.webp', name: '', desc: '' },
-			{ src: '/resources/images/business/work/fireplace/work-fireplace-06.webp', name: '', desc: '' },
-			{ src: '/resources/images/business/work/fireplace/work-fireplace-07.webp', name: '', desc: '' },
-			{ src: '/resources/images/business/work/fireplace/work-fireplace-08.webp', name: '', desc: '' },
-			{ src: '/resources/images/business/work/fireplace/work-fireplace-09.webp', name: '', desc: '' },
+			{ src: './resources/images/business/work/fireplace/work-fireplace-01.webp', name: '', desc: '' },
+			{ src: './resources/images/business/work/fireplace/work-fireplace-02.webp', name: '', desc: '' },
+			{ src: './resources/images/business/work/fireplace/work-fireplace-03.webp', name: '', desc: '' },
+			{ src: './resources/images/business/work/fireplace/work-fireplace-04.webp', name: '', desc: '' },
+			{ src: './resources/images/business/work/fireplace/work-fireplace-05.webp', name: '', desc: '' },
+			{ src: './resources/images/business/work/fireplace/work-fireplace-06.webp', name: '', desc: '' },
+			{ src: './resources/images/business/work/fireplace/work-fireplace-07.webp', name: '', desc: '' },
+			{ src: './resources/images/business/work/fireplace/work-fireplace-08.webp', name: '', desc: '' },
+			{ src: './resources/images/business/work/fireplace/work-fireplace-09.webp', name: '', desc: '' },
 		]
 	},
 	{
 		name: 'Stone Mailboxes', name_es: 'Buzones de Piedra',
 		images: [
-			{ src: '/resources/images/business/work/mailboxes/work-mailbox-01.webp', name: '', desc: '' },
-			{ src: '/resources/images/business/work/mailboxes/work-mailbox-02.webp', name: '', desc: '' },
-			{ src: '/resources/images/business/work/mailboxes/work-mailbox-03.webp', name: '', desc: '' },
+			{ src: './resources/images/business/work/mailboxes/work-mailbox-01.webp', name: '', desc: '' },
+			{ src: './resources/images/business/work/mailboxes/work-mailbox-02.webp', name: '', desc: '' },
+			{ src: './resources/images/business/work/mailboxes/work-mailbox-03.webp', name: '', desc: '' },
 		]
 	},
 	{
 		name: 'Other Services', name_es: 'Otros Servicios',
 		images: [
-			{ src: '/resources/images/business/work/previs/work-previs-01.webp', name: '', desc: '' },
-			{ src: '/resources/images/business/work/previs/work-previs-02.webp', name: '', desc: '' },
-			{ src: '/resources/images/business/work/previs/work-previs-03.webp', name: '', desc: '' },
+			{ src: './resources/images/business/work/previs/work-previs-01.webp', name: '', desc: '' },
+			{ src: './resources/images/business/work/previs/work-previs-02.webp', name: '', desc: '' },
+			{ src: './resources/images/business/work/previs/work-previs-03.webp', name: '', desc: '' },
 		]
 	},
 ];
