@@ -42,7 +42,7 @@ const get_stored_string = (key, value_default = '') =>
 	if (typeof key !== 'string' || key.length < 1) return value_default;
 
 	let lsobj = localStorage.getItem(key);
-	return typeof lsobj === 'string' ? lsobj : (String(lsobj) ?? value_default);
+	return typeof lsobj === 'string' ? lsobj : value_default;
 };
 
 const set_stored_string = (key, value = '') =>
@@ -56,8 +56,8 @@ const add_css_file = path =>
 	let e_css = document.createElement('link');
 	e_css.rel = 'stylesheet';
 	e_css.type = 'text/css';
-	e_css.href = path;
 	document.head.appendChild(e_css);
+	e_css.href = path;
 };
 
 add_css_file('./styles.css');
@@ -206,7 +206,7 @@ localisation.nextLanguage = () =>
 };
 
 window.localisation = localisation;
-window.localisation.setLang(get_stored_string('user-lang', 'en'));
+window.localisation.setLang(get_stored_string('user-lang', 'en') ?? 'en');
 
 
 
