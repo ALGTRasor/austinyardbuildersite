@@ -590,6 +590,8 @@ body > header[expanded] .detail-list
 	cursor: default;
 	display: block;
 	position: relative;
+	margin-left: 1px;
+	margin-right: 1px;
 	width: 6px;
 	height: 6px;
 	align-content: center;
