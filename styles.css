@@ -47,6 +47,22 @@
 	box-sizing: border-box;
 }
 
+b
+{
+	user-select: all;
+	color: var(--theme-color-dark);
+	font-weight: bold;
+	font-size: 110%;
+}
+
+i
+{
+	user-select: all;
+	color: var(--theme-color-dark);
+	font-style: italic;
+	font-weight: bold;
+}
+
 html
 {
 	color: var(--stroke-black);
@@ -56,6 +72,7 @@ html
 
 	overflow: clip;
 	font-family: Karla;
+	letter-spacing: 1px;
 }
 
 html:not([lang="en"]) .lang-en
@@ -186,6 +203,7 @@ body
 
 	display: flex;
 	flex-direction: column;
+	align-items: center;
 	gap: 4px;
 	padding: 4px;
 
@@ -204,8 +222,7 @@ body > *
 
 	flex-grow: 1.0;
 	flex-basis: 0.0;
-	overflow: hidden auto;
-	align-self: center;
+	overflow: hidden;
 }
 
 
@@ -226,7 +243,7 @@ body > *
 	position: absolute;
 	inset: 0;
 
-	border-radius: min(1rem, 1vw);
+	border-radius: min(0.5rem, 1vw);
 	transition-property: opacity;
 	transition-duration: 333ms;
 	transition-timing-function: ease-in-out;
@@ -243,12 +260,12 @@ body > *
 	20%
 	{
 		transform-origin: var(--max-pos) var(--min-pos);
+		scale: var(--max-zoom);
 	}
 
 	40%
 	{
 		transform-origin: var(--min-pos) var(--min-pos);
-		scale: var(--max-zoom);
 	}
 
 	60%
@@ -276,6 +293,8 @@ body > *
 	top: 0;
 	width: 100%;
 	height: 100%;
+	max-width: 100%;
+	max-height: 100%;
 	object-fit: cover;
 
 	--min-pos: 10%;
@@ -286,9 +305,9 @@ body > *
 
 	animation: image-fade-zoom var(--background-animation-duration) ease-in-out infinite forwards;
 
-	transition-property: opacity;
-	transition-duration: 500ms;
-	transition-timing-function: ease-in-out;
+	transition-property: opacity, transform-origin, scale;
+	transition-timing-function: ease-in-out, cubic-bezier(0.0, -0.9, 1.0, 1.9), cubic-bezier(0.0, -0.9, 1.0, 1.9);
+	transition-duration: 600ms;
 }
 
 
@@ -296,28 +315,71 @@ body > *
 
 
 
-.glass
-{
-	background: rgb(from var(--gray-light) r g b / 0.8);
-	/*backdrop-filter: blur(9px);*/
-}
-.glass-colored
-{
-	--glass-color: var(--theme-color-light);
-	background: rgb(from var(--glass-color) r g b / 0.4);
-	/*backdrop-filter: blur(9px);*/
-}
-.glass-soft
-{
-	background: rgb(from var(--gray-light) r g b / 0.4);
-	/*backdrop-filter: blur(9px);*/
-}
+.glass,
+.glass-soft,
+.glass-colored,
+.glass-colored-soft,
 .glass-gradient
 {
-	--grad-angle: 15deg;
-	background: linear-gradient(var(--grad-angle), rgb(from var(--gray-light) r g b / 0.2), rgb(from var(--gray-light) r g b / 0.8) 70%);
-	/*backdrop-filter: blur(9px);*/
+	--glass-alpha: 0.5;
+	--glass-color: var(--gray-light);
+	background-color: rgb(from var(--glass-color) r g b / var(--glass-alpha));
 }
+
+.glass-colored,
+.glass-colored-soft
+{
+	--glass-color: var(--theme-color-light);
+}
+
+.glass-gradient
+{
+	--glass-alpha: 0.8;
+	--grad-angle: 35deg;
+	background-color: unset;
+	background: linear-gradient(var(--grad-angle), rgb(from var(--glass-color) r g b / calc(var(--glass-alpha) / 2)), rgb(from var(--glass-color) r g b / var(--glass-alpha)) 70%);
+}
+
+@supports (filter:blur(1px))
+{
+	.glass,
+	.glass-soft,
+	.glass-colored,
+	.glass-colored-soft,
+	.glass-gradient
+	{
+		backdrop-filter: blur(7px);
+	}
+
+	.glass-soft,
+	.glass-colored-soft
+	{
+		--glass-alpha: 0.2;
+	}
+	.glass,
+	.glass-colored,
+	.glass-gradient
+	{
+		--glass-alpha: 0.8;
+	}
+}
+
+@supports not (filter:blur(1px))
+{
+	.glass-soft,
+	.glass-colored-soft
+	{
+		--glass-alpha: 0.8;
+	}
+	.glass,
+	.glass-colored,
+	.glass-gradient
+	{
+		--glass-alpha: 1.0;
+	}
+}
+
+
 
 
 
@@ -613,6 +675,7 @@ body > header[expanded] .detail-list
 
 body > main
 {
+	display: block;
 	position: relative;
 	padding: 4px;
 	border-radius: 0px;
@@ -627,12 +690,18 @@ body > main
 	border-radius: 8px;
 	padding: 1rem;
 
+	min-width: min(100vw - 2rem, 60rem);
+	max-width: 100%;
+	max-height: 100%;
+	overflow: hidden auto;
+
 	display: flex;
 	flex-direction: column;
 	align-items: stretch;
 	gap: 0.5rem;
 
 	box-shadow: 0px 0px 8px #0006;
+	clip-path: stroke-box;
 
 	transition-property: opacity, translate;
 	transition-timing-function: ease-in-out;

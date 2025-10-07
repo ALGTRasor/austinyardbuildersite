@@ -1,4 +1,4 @@
-async function sleep(ms) { return new Promise(_ => window.setTimeout(_, ms)); }
+async function sleep(ms) { if (ms > 0) return new Promise(_ => window.setTimeout(_, ms)); else return; }
 function until(conditionFxn)
 {
 	const check = resolve =>
@@ -28,12 +28,12 @@ const addLabel = (e_parent, text, text_espanol) =>
 {
 	if (text_espanol)
 	{
-		addChild(e_parent, { tag: 'span', className: 'lang-en', innerText: text });
-		addChild(e_parent, { tag: 'span', className: 'lang-es', innerText: text_espanol });
+		addChild(e_parent, { tag: 'span', className: 'lang-en', innerHTML: text });
+		addChild(e_parent, { tag: 'span', className: 'lang-es', innerHTML: text_espanol });
 	}
 	else
 	{
-		addChild(e_parent, { tag: 'span', innerText: text });
+		addChild(e_parent, { tag: 'span', innerHTML: text });
 	}
 };
 
@@ -85,62 +85,62 @@ const galleries = [
 	{
 		name: 'Patio Covers', name_es: 'Cubiertas de Patio',
 		images: [
-			{ src: './resources/images/business/work/patio_covers/work-patio-cover-01.webp', name: '', desc: '' },
-			{ src: './resources/images/business/work/patio_covers/work-patio-cover-02.webp', name: '', desc: '' },
-			{ src: './resources/images/business/work/patio_covers/work-patio-cover-03.webp', name: '', desc: '' },
-			{ src: './resources/images/business/work/patio_covers/work-patio-cover-04.webp', name: '', desc: '' },
-			{ src: './resources/images/business/work/patio_covers/work-patio-cover-05.webp', name: '', desc: '' },
-			{ src: './resources/images/business/work/patio_covers/work-patio-cover-06.webp', name: '', desc: '' },
-			{ src: './resources/images/business/work/patio_covers/work-patio-cover-07.webp', name: '', desc: '' },
+			{ src: './resources/images/business/work/patio_covers/work-patio-cover-01.webp', name: '', desc: '', include_in_roulette: true },
+			{ src: './resources/images/business/work/patio_covers/work-patio-cover-02.webp', name: '', desc: '', include_in_roulette: true },
+			{ src: './resources/images/business/work/patio_covers/work-patio-cover-03.webp', name: '', desc: '', include_in_roulette: true },
+			{ src: './resources/images/business/work/patio_covers/work-patio-cover-04.webp', name: '', desc: '', include_in_roulette: true },
+			{ src: './resources/images/business/work/patio_covers/work-patio-cover-05.webp', name: '', desc: '', include_in_roulette: true },
+			{ src: './resources/images/business/work/patio_covers/work-patio-cover-06.webp', name: '', desc: '', include_in_roulette: true },
+			{ src: './resources/images/business/work/patio_covers/work-patio-cover-07.webp', name: '', desc: '', include_in_roulette: true },
 		]
 	},
 	{
 		name: 'Stone Kitchens', name_es: 'Cocinas de Piedra',
 		images: [
-			{ src: './resources/images/business/work/kitchens/work-kitchen-01.webp', name: '', desc: '' },
-			{ src: './resources/images/business/work/kitchens/work-kitchen-02.webp', name: '', desc: '' },
-			{ src: './resources/images/business/work/kitchens/work-kitchen-03.webp', name: '', desc: '' },
-			{ src: './resources/images/business/work/kitchens/work-kitchen-04.webp', name: '', desc: '' },
-			{ src: './resources/images/business/work/kitchens/work-kitchen-05.webp', name: '', desc: '' },
-			{ src: './resources/images/business/work/kitchens/work-kitchen-06.webp', name: '', desc: '' },
-			{ src: './resources/images/business/work/kitchens/work-kitchen-07.webp', name: '', desc: '' },
+			{ src: './resources/images/business/work/kitchens/work-kitchen-01.webp', name: '', desc: '', include_in_roulette: true },
+			{ src: './resources/images/business/work/kitchens/work-kitchen-02.webp', name: '', desc: '', include_in_roulette: true },
+			{ src: './resources/images/business/work/kitchens/work-kitchen-03.webp', name: '', desc: '', include_in_roulette: true },
+			{ src: './resources/images/business/work/kitchens/work-kitchen-04.webp', name: '', desc: '', include_in_roulette: true },
+			{ src: './resources/images/business/work/kitchens/work-kitchen-05.webp', name: '', desc: '', include_in_roulette: true },
+			{ src: './resources/images/business/work/kitchens/work-kitchen-06.webp', name: '', desc: '', include_in_roulette: true },
+			{ src: './resources/images/business/work/kitchens/work-kitchen-07.webp', name: '', desc: '', include_in_roulette: true },
 		]
 	},
 	{
 		name: 'Flagstone Patios', name_es: 'Patios de Losas',
 		images: [
-			{ src: './resources/images/business/work/flagstone_patio/work-flagstone-patio-01.webp', name: '', desc: '' },
-			{ src: './resources/images/business/work/flagstone_patio/work-flagstone-patio-02.webp', name: '', desc: '' },
-			{ src: './resources/images/business/work/flagstone_patio/work-flagstone-patio-03.webp', name: '', desc: '' },
-			{ src: './resources/images/business/work/flagstone_patio/work-flagstone-patio-04.webp', name: '', desc: '' },
-			{ src: './resources/images/business/work/flagstone_patio/work-flagstone-patio-05.webp', name: '', desc: '' },
-			{ src: './resources/images/business/work/flagstone_patio/work-flagstone-patio-06.webp', name: '', desc: '' },
-			{ src: './resources/images/business/work/flagstone_patio/work-flagstone-patio-07.webp', name: '', desc: '' },
-			{ src: './resources/images/business/work/flagstone_patio/work-flagstone-patio-08.webp', name: '', desc: '' },
-			{ src: './resources/images/business/work/flagstone_patio/work-flagstone-patio-09.webp', name: '', desc: '' },
-			{ src: './resources/images/business/work/flagstone_patio/work-flagstone-patio-10.webp', name: '', desc: '' },
+			{ src: './resources/images/business/work/flagstone_patio/work-flagstone-patio-01.webp', name: '', desc: '', include_in_roulette: true },
+			{ src: './resources/images/business/work/flagstone_patio/work-flagstone-patio-02.webp', name: '', desc: '', include_in_roulette: true },
+			{ src: './resources/images/business/work/flagstone_patio/work-flagstone-patio-03.webp', name: '', desc: '', include_in_roulette: true },
+			{ src: './resources/images/business/work/flagstone_patio/work-flagstone-patio-04.webp', name: '', desc: '', include_in_roulette: true },
+			{ src: './resources/images/business/work/flagstone_patio/work-flagstone-patio-05.webp', name: '', desc: '', include_in_roulette: true },
+			{ src: './resources/images/business/work/flagstone_patio/work-flagstone-patio-06.webp', name: '', desc: '', include_in_roulette: true },
+			{ src: './resources/images/business/work/flagstone_patio/work-flagstone-patio-07.webp', name: '', desc: '', include_in_roulette: true },
+			{ src: './resources/images/business/work/flagstone_patio/work-flagstone-patio-08.webp', name: '', desc: '', include_in_roulette: true },
+			{ src: './resources/images/business/work/flagstone_patio/work-flagstone-patio-09.webp', name: '', desc: '', include_in_roulette: true },
+			{ src: './resources/images/business/work/flagstone_patio/work-flagstone-patio-10.webp', name: '', desc: '', include_in_roulette: true },
 		]
 	},
 	{
 		name: 'Masonry Fireplaces', name_es: 'Chimeneas de Mampostería',
 		images: [
-			{ src: './resources/images/business/work/fireplace/work-fireplace-01.webp', name: '', desc: '' },
-			{ src: './resources/images/business/work/fireplace/work-fireplace-02.webp', name: '', desc: '' },
-			{ src: './resources/images/business/work/fireplace/work-fireplace-03.webp', name: '', desc: '' },
-			{ src: './resources/images/business/work/fireplace/work-fireplace-04.webp', name: '', desc: '' },
-			{ src: './resources/images/business/work/fireplace/work-fireplace-05.webp', name: '', desc: '' },
-			{ src: './resources/images/business/work/fireplace/work-fireplace-06.webp', name: '', desc: '' },
+			{ src: './resources/images/business/work/fireplace/work-fireplace-01.webp', name: '', desc: '', include_in_roulette: true },
+			{ src: './resources/images/business/work/fireplace/work-fireplace-02.webp', name: '', desc: '', include_in_roulette: true },
+			{ src: './resources/images/business/work/fireplace/work-fireplace-03.webp', name: '', desc: '', include_in_roulette: true },
+			{ src: './resources/images/business/work/fireplace/work-fireplace-04.webp', name: '', desc: '', include_in_roulette: true },
+			{ src: './resources/images/business/work/fireplace/work-fireplace-05.webp', name: '', desc: '', include_in_roulette: true },
+			{ src: './resources/images/business/work/fireplace/work-fireplace-06.webp', name: '', desc: '', include_in_roulette: true },
 			{ src: './resources/images/business/work/fireplace/work-fireplace-07.webp', name: '', desc: '' },
-			{ src: './resources/images/business/work/fireplace/work-fireplace-08.webp', name: '', desc: '' },
-			{ src: './resources/images/business/work/fireplace/work-fireplace-09.webp', name: '', desc: '' },
+			{ src: './resources/images/business/work/fireplace/work-fireplace-08.webp', name: '', desc: '', include_in_roulette: true },
+			{ src: './resources/images/business/work/fireplace/work-fireplace-09.webp', name: '', desc: '', include_in_roulette: true },
 		]
 	},
 	{
 		name: 'Stone Mailboxes', name_es: 'Buzones de Piedra',
 		images: [
-			{ src: './resources/images/business/work/mailboxes/work-mailbox-01.webp', name: '', desc: '' },
+			{ src: './resources/images/business/work/mailboxes/work-mailbox-01.webp', name: '', desc: '', include_in_roulette: true },
 			{ src: './resources/images/business/work/mailboxes/work-mailbox-02.webp', name: '', desc: '' },
-			{ src: './resources/images/business/work/mailboxes/work-mailbox-03.webp', name: '', desc: '' },
+			{ src: './resources/images/business/work/mailboxes/work-mailbox-03.webp', name: '', desc: '', include_in_roulette: true },
 		]
 	},
 	{
@@ -164,6 +164,7 @@ const get_gallery_image_info_random = () =>
 };
 const get_gallery_image_info = (gallery_index, image_index) => { return galleries[gallery_index].images[image_index] };
 
+const gallery_roulette = galleries.map(g => g.images.filter(i => i.include_in_roulette === true)).flat().map(i => i.src);
 
 
 
@@ -312,56 +313,105 @@ social_icons.forEach(
 
 
 
+export class ImageFader
+{
+	fade_duration = 600;
+	load_wait_duration = 500;
+	opacity_max = 100;
 
+	source_queue = [];
+	roulette_sources = [];
+	roulette_interval_id = -1;
+	roulette_delay_ms = 30000;
 
-
-
-
-
-
-
-
-
-
-
-
-window.background = {
-	e_root: document.getElementById('body-background-root'),
-	e_img: document.getElementById('body-background-img'),
-	setImageSource: src => 
+	constructor(target_img, target_opacity)
 	{
-		window.background.e_img.src = src;
-	},
-
-	fadeTo: src => 
-	{
-		const do_fade = async () =>
-		{
-			window.background.e_img.style.opacity = '0%';
-			await sleep(600);
-			window.background.setImageSource(src);
-			await sleep(600);
-			window.background.e_img.style.opacity = '90%';
-			await sleep(600);
-		};
-		do_fade();
-	},
-
-	set_brightness: percent =>
-	{
-		window.background.e_root.style.opacity = percent + '%';
+		this.target_img = target_img;
+		this.target_opacity = target_opacity;
 	}
-};
+
+	SetOpacity(opacity) { if (this.target_opacity) this.target_opacity.style.opacity = typeof opacity === 'string' ? opacity : (opacity + '%'); }
+	SetImageSource(source) { if (this.target_img) this.target_img.src = source; }
+
+	async TransitionToImage(source)
+	{
+		this.source_queue.push(source);
+		if (this.transitioning === true) return;
+
+		this.transitioning = true;
+		while (this.source_queue.length > 0)
+		{
+			this.SetOpacity(0);
+			if (this.fade_duration > 0) await sleep(this.fade_duration);
+
+			let next_source = this.source_queue[this.source_queue.length - 1];
+			this.SetImageSource(next_source);
+			this.source_queue = [];
+
+			if (this.load_wait_duration > 0) await sleep(this.load_wait_duration);
+
+			this.SetOpacity(this.opacity_max);
+			if (this.fade_duration > 0) await sleep(this.fade_duration);
+		}
+		this.transitioning = false;
+	}
+
+	BeginRoulette(sources, delay_seconds = 30, change_now = false)
+	{
+		this.StopRoulette();
+		this.roulette_sources = Array.from(sources);
+
+		if (delay_seconds) this.roulette_delay_ms = delay_seconds * 1000;
+
+		this.roulette_interval_id = window.setInterval(() => { this.TransitionRoulette(); }, this.roulette_delay_ms);
+		if (change_now === true) this.TransitionRoulette();
+	}
+	TransitionRoulette() { this.TransitionToImage(this.roulette_sources[Math.round(Math.random() * (this.roulette_sources.length - 1))]); }
+	StopRoulette() { if (this.roulette_interval_id > -1) window.clearInterval(this.roulette_interval_id); }
+
+}
 
 
-let background_anim_duration_s = 60;
-let background_change_delta_s = 40;
-setRootStyleProperty('--background-animation-duration', background_anim_duration_s + 's');
-window.setInterval(() => { window.background.fadeTo(get_gallery_image_info_random().src); }, background_change_delta_s * 1000);
-window.background.fadeTo(get_gallery_image_info_random().src);
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+export class SceneBackground
+{
+	static e_root = document.getElementById('body-background-root');
+	static e_img = document.getElementById('body-background-img');
+
+	static fader = new ImageFader(SceneBackground.e_img, SceneBackground.e_img);
+
+	static SetRootOpacity(percent) { SceneBackground.e_root.style.opacity = percent + '%'; };
+	static SetImageOpacity(percent) { SceneBackground.fader.SetOpacity(percent); };
+	static SetImageSource(src) { SceneBackground.fader.SetImageSource(src); }
+
+	static StartAutoChanging(change_now = false)
+	{
+		const background_anim_duration_s = 45;
+		const background_change_delta_s = background_anim_duration_s * 0.7;
+		setRootStyleProperty('--background-animation-duration', background_anim_duration_s + 's');
+		SceneBackground.fader.BeginRoulette(gallery_roulette, background_change_delta_s, change_now);
+	}
+
+	static StopAutoChanging()
+	{
+		SceneBackground.fader.StopRoulette();
+	}
+}
+SceneBackground.fader.opacity_max = 90;
+SceneBackground.StartAutoChanging(true);
 
 
 
@@ -473,7 +523,7 @@ const page_prep_default = _ =>
 {
 	Experience.ReducePage();
 
-	let e_body = addChild(_.e_root, { tag: 'div', style: 'position:relative; text-align:center; max-width:36rem; font-size:110%;' });
+	let e_body = addChild(_.e_root, { tag: 'div', style: 'position:relative; text-align:center; font-size:110%;' });
 	addLabel(
 		e_body,
 		'This page is not ready yet. Sorry!',
@@ -491,12 +541,22 @@ const page_splash = new Page(
 	_ =>
 	{
 		Experience.ReducePage();
+		SceneBackground.StartAutoChanging();
 
-		let e_intro = addChild(_.e_root, { tag: 'div', style: 'position:relative; text-align:center; max-width:36rem; font-size:110%; padding:2rem;' });
+		let e_intro = addChild(_.e_root, { tag: 'div', style: 'position:relative; display:flex; flex-direction:column; padding:1rem; gap:0.5rem;' });
+
+		let e_name = addChild(e_intro, { tag: 'div', style: 'position:relative; text-align:center; text-wrap:nowrap; padding:0.5rem; font-size:110%;' });
 		addLabel(
-			e_intro,
-			'With many years of experience, Austin Yard Builder is the perfect choice for transforming your outdoor living space, no matter how big or small the patio project is!',
-			'Con muchos años de experiencia, Austin Yard Builder es la elección perfecta para transformar su espacio de vida al aire libre, ¡sin importar cuán grande o pequeño sea el proyecto del patio!'
+			e_name,
+			'<b>Austin Yard Builder - Patio Stone Contractor</b>',
+			'<b>Austin Yard Builder - Contratista de Piedra para Patio</b>'
+		);
+
+		let e_intro_body = addChild(e_intro, { tag: 'div', style: 'position:relative; text-align:center; font-size:100%;' });
+		addLabel(
+			e_intro_body,
+			'With many years of experience, <i>Austin Yard Builder</i> is the perfect choice for transforming your outdoor living space, no matter how big or small the project is!',
+			'Con muchos años de experiencia, <i>Austin Yard Builder</i> es la elección perfecta para transformar su espacio de vida al aire libre, ¡sin importar cuán grande o pequeño sea el proyecto!'
 		);
 
 		let e_buttons_root = addChild(_.e_root, { tag: 'div', className: 'button-row' });
@@ -517,7 +577,77 @@ const page_splash = new Page(
 );
 
 const page_about = new Page(
-	page_prep_default
+	_ =>
+	{
+		Experience.ReducePage();
+		window.e_header_title.innerText = 'ABOUT US';
+
+		/*
+		let e_logo = addChild(
+			_.e_root,
+			{
+				tag: 'img',
+				style: 'position:relative; max-height:8rem; max-width:8rem; object-fit:contain; align-self:center; background-color:white; border-radius:8px;',
+				src: './resources/images/business/logo/logo_a.webp'
+			}
+		);
+		*/
+
+		let e_top = addChild(_.e_root, { tag: 'div', style: 'position:relative; text-align:center; display:flex; flex-direction:column; gap:0.5rem; padding:1rem min(4rem, 6vw) 1rem min(4rem, 6vw); font-size:85%;' });
+		addLabel(
+			e_top,
+			`<b>It Started With An Idea...</b>`,
+			`<b>Prestamos mucha atención a los detalles</b>`
+		);
+		addLabel(
+			e_top,
+			`Over <i>15 years</i> ago, Miguel started this business with the idea of transforming outdoor living spaces for the people of Austin, Texas and the surrounding area. We started with the basics such as <i>stone repairs</i> and <i>flowerbeds</i>, then expanded into <i>masonry mailboxes</i> and other <i>stone landscaping</i> services. Along the years, we've been working hard at perfecting our craft, researching ways on how we can improve our masons while tackling bigger and higher quality outdoor living projects. We do <i>flagstone patios</i>, <i>patio covers/pergolas</i>, and even <i>fireplaces</i> and <i>fire pits</i>, providing the hospitality and communication we are known for. As a well established company, we want to make sure our clients are completely satisfied with the end results of their outdoor living project.`,
+			`Hace más de <i>15 años</i>, Miguel comenzó este negocio con la idea de transformar los espacios de vida al aire libre para la gente de Austin, Texas y sus alrededores. Comenzamos con lo básico, como <i>reparaciones de piedra</i> y <i>macizos de flores</i>, luego nos expandimos a <i>buzones de mampostería</i> y otros servicios de <i>paisajismo de piedra</i>. A lo largo de los años, hemos estado trabajando arduamente para perfeccionar nuestro oficio, investigando formas de mejorar nuestros albañiles mientras abordamos proyectos de vida al aire libre más grandes y de mayor calidad. Hacemos <i>patios de losas</i>, <i>cubiertas de patio/pérgolas</i>, e incluso <i>chimeneas</i> y <i>fogatas</i>, al tiempo que brindamos la hospitalidad y la comunicación por las que se conoce al contratista de albañilería Austin Yard Builder. Como empresa bien establecida, queremos asegurarnos de que nuestros clientes estén completamente satisfechos con los resultados finales de su proyecto de vida al aire libre.`
+		);
+		addLabel(
+			e_top,
+			`With many years of experience and no matter how big or small the patio project is, Austin Yard Builder Masonry Contractor is your perfect choice for transforming your outdoor living space!`,
+			`Con muchos años de experiencia y sin importar cuán grande o pequeño sea el proyecto del patio, Austin Yard Builder Masonry Contractor es su elección perfecta para transformar su espacio de vida al aire libre.`
+		);
+		addLabel(
+			e_top,
+			`Work alongside our expert <i>mason designers and artisans</i> to create an outdoor living space you will enjoy!`,
+			`¡Trabaja junto a nuestros <i>expertos diseñadores de albañiles y artesanos</i> para crear un espacio de vida al aire libre que disfrutarás!`
+		);
+
+
+		let e_bottom = addChild(_.e_root, { tag: 'div', style: 'position:relative; text-align:center; display:flex; flex-direction:row; flex-wrap:wrap; gap:1rem; padding:1rem; font-size:85%;' });
+		let e_bottom_left = addChild(e_bottom, { tag: 'div', style: 'position:relative; text-align:center; display:flex; flex-direction:column; gap:0.5rem; padding:1rem; flex-basis:20rem; flex-grow:1.0; flex-shrink:1.0;' });
+		addLabel(
+			e_bottom_left,
+			`<b>We Pay Close Attention to Detail</b>`,
+			`<b>Prestamos mucha atención a los detalles</b>`
+		);
+		addLabel(
+			e_bottom_left,
+			`We make sure everything is done right and the way <i>you want it</i>. Our masons are professionals and true craftsmen. With <i>15+ years</i> of experience, we are the right team for any project!`,
+			``
+		);
+		let e_bottom_right = addChild(e_bottom, { tag: 'div', style: 'position:relative; text-align:center; display:flex; flex-direction:column; gap:0.5rem; padding:1rem; flex-basis:20rem; flex-grow:1.0; flex-shrink:1.0;' });
+		addLabel(
+			e_bottom_right,
+			`<b>Be Confident In Your Custom Stone Work</b>`,
+			`<b>Confíe en su trabajo de piedra personalizado</b>`
+		);
+		addLabel(
+			e_bottom_right,
+			`We work with you to make sure you understand every step of the project. We will <i>make sure</i> you are satisfied with the process and the end results as well!`,
+			``
+		);
+
+
+
+		let e_buttons_root = addChild(_.e_root, { tag: 'div', className: 'button-row' });
+
+		let e_btn_ok = addChild(e_buttons_root, { tag: 'button', style: 'position:relative;' });
+		addLabel(e_btn_ok, 'OKAY', 'BIEN');
+		e_btn_ok.addEventListener('click', e => { Experience.ShowPage(page_splash); });
+	}
 );
 
 const page_contact_us = new Page(
@@ -549,23 +679,36 @@ const page_gallery = new Page(
 		let e_desc = addChild(e_img_wrap, { tag: 'div', className: 'gallery-showcase-description glass', innerText: 'This is some information about the current gallery showcase image.' });
 		page.fading = false;
 
+		page.src_queue = [];
+
 		let fade_to_img = async (src, slide_direction) =>
 		{
-			if (page.fading === true) return;
+			page.src_queue.push(src);
 
-			page.fading = true;
-			e_img_wrap.style.scale = '98%';
-			e_img_wrap.style.opacity = '0%';
-			e_img_wrap.style.translate = ((slide_direction ?? 1) * -2) + `rem 0`;
-			await sleep(200);
-			e_img_wrap.style.translate = ((slide_direction ?? 1) * 2) + `rem 0`;
-			e_img.src = src;
-			await sleep(300);
-			e_img_wrap.style.scale = '100%';
-			e_img_wrap.style.opacity = '100%';
-			e_img_wrap.style.translate = '0% 0%';
-			await sleep(200);
-			page.fading = false;
+			if (page.fading === true) return;
+			if (page.current_image_src === src) return;
+
+			SceneBackground.StopAutoChanging();
+
+			while (page.src_queue.length > 0)
+			{
+				page.fading = true;
+				e_img_wrap.style.scale = '98%';
+				e_img_wrap.style.opacity = '0%';
+				e_img_wrap.style.translate = ((slide_direction ?? 1) * -2) + `rem 0`;
+				await sleep(200);
+				e_img_wrap.style.translate = ((slide_direction ?? 1) * 2) + `rem 0`;
+				page.current_image_src = page.src_queue[page.src_queue.length - 1];
+				page.src_queue = [];
+				SceneBackground.fader.TransitionToImage(page.current_image_src);
+				e_img.src = page.current_image_src;
+				await sleep(300);
+				e_img_wrap.style.scale = '100%';
+				e_img_wrap.style.opacity = '100%';
+				e_img_wrap.style.translate = '0% 0%';
+				await sleep(200);
+				page.fading = false;
+			}
 		};
 
 
@@ -581,6 +724,9 @@ const page_gallery = new Page(
 		fade_to_img(get_gallery_image_info_random().src);
 	}
 );
+
+
+
 
 class Experience
 {
@@ -601,21 +747,25 @@ class Experience
 	static ExpandPage()
 	{
 		window.header.Collapse();
-		window.background.set_brightness(10);
+		SceneBackground.SetRootOpacity(10);
 		Experience.e_page_root.style.boxShadow = 'none';
 		Experience.e_page_root.style.position = 'absolute';
 		Experience.e_page_root.style.width = '100%';
 		Experience.e_page_root.style.height = '100%';
+		Experience.e_page_root.style.removeProperty('max-width');
+		Experience.e_page_root.style.removeProperty('max-height');
 	}
 
 	static ReducePage()
 	{
 		window.header.Expand();
-		window.background.set_brightness(100);
+		SceneBackground.SetRootOpacity(100);
 		Experience.e_page_root.style.boxShadow = '0px 0px 8px #0006';
 		Experience.e_page_root.style.position = 'absolute';
 		Experience.e_page_root.style.width = 'fit-content';
 		Experience.e_page_root.style.height = 'fit-content';
+		Experience.e_page_root.style.maxWidth = 'calc(100% - 1rem)';
+		Experience.e_page_root.style.maxHeight = 'calc(100% - 1rem)';
 	}
 
 	static async ShowPage(page)
