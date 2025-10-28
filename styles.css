@@ -11,14 +11,14 @@
 	--theme-color-old: hsl(149, 97%, 23%);
 
 	--theme-hue: 149deg;
-	--theme-color: hsl(var(--theme-hue) 90% 50%);
-	--theme-lightness-light: 80%;
-	--theme-lightness-dark: 20%;
+	--theme-color: hsl(var(--theme-hue) 100% 50%);
+	--theme-lightness-light: 75%;
+	--theme-lightness-dark: 25%;
 	--theme-color-light: hsl(var(--theme-hue) 100% var(--theme-lightness-light));
 	--theme-color-dark: hsl(var(--theme-hue) 100% var(--theme-lightness-dark));
 
-	--gray-dark: hsl(0, 0%, 15%);
-	--gray-light: hsl(0, 0%, 85%);
+	--gray-dark: hsl(0, 0%, 5%);
+	--gray-light: hsl(0, 0%, 95%);
 	--stroke-dark: hsl(0, 0%, var(--theme-lightness-dark));
 	--stroke-light: hsl(0, 0%, var(--theme-lightness-light));
 	--stroke-black: hsl(0, 0%, 5%);
@@ -268,7 +268,8 @@ body > *
 
 	flex-grow: 1.0;
 	flex-basis: 0.0;
-	overflow: hidden;
+
+	overflow: visible;
 }
 
 
@@ -370,6 +371,7 @@ body > *
 	--glass-alpha: 0.5;
 	--glass-color: var(--gray-light);
 	background-color: rgb(from var(--glass-color) r g b / var(--glass-alpha));
+	box-shadow: -3px 3px 6px rgb(0 0 0 / calc(var(--glass-alpha) * 0.2));
 }
 
 .glass-colored,
@@ -380,13 +382,12 @@ body > *
 
 .glass-gradient
 {
-	--glass-alpha: 0.8;
-	--grad-angle: 35deg;
+	--grad-angle: 45deg;
 	background-color: unset;
 	background: linear-gradient(var(--grad-angle), rgb(from var(--glass-color) r g b / calc(var(--glass-alpha) / 2)), rgb(from var(--glass-color) r g b / var(--glass-alpha)) 70%);
 }
 
-@supports (filter:blur(1px))
+@supports (filter:blur(5px))
 {
 	.glass,
 	.glass-soft,
@@ -394,7 +395,7 @@ body > *
 	.glass-colored-soft,
 	.glass-gradient
 	{
-		backdrop-filter: blur(7px);
+		backdrop-filter: blur(5px);
 	}
 
 	.glass-soft,
@@ -410,7 +411,7 @@ body > *
 	}
 }
 
-@supports not (filter:blur(1px))
+@supports not (filter:blur(5px))
 {
 	.glass-soft,
 	.glass-colored-soft
@@ -502,7 +503,6 @@ body > header > img
 
 	min-height: 0%;
 	min-width: 0%;
-	max-height: 100%;
 	max-width: 100%;
 
 	margin-left: min(2rem, 3vw);
@@ -569,7 +569,7 @@ body > header[expanded] .detail-list
 .detail-label
 {
 	user-select: none;
-	min-width: 5rem;
+	min-width: 6rem;
 	flex-basis: fit-content;
 	flex-grow: 0.0;
 	flex-shrink: 0.0;
@@ -740,15 +740,12 @@ body > main
 	min-width: min(100vw - 2rem, 60rem);
 	max-width: 100%;
 	max-height: 100%;
-	overflow: hidden auto;
+	overflow: visible auto;
 
 	display: flex;
 	flex-direction: column;
 	align-items: stretch;
 	gap: 0.5rem;
-
-	box-shadow: 0px 0px 8px #0006;
-	clip-path: stroke-box;
 
 	transition-property: opacity, translate;
 	transition-timing-function: ease-in-out;
@@ -827,7 +824,6 @@ body > main
 	min-width: 0;
 	min-height: 0;
 	padding: 0;
-	border-radius: 100%;
 
 	outline: dashed 1px rgb(from var(--stroke-white) r g b / 0.5);
 	outline-offset: -1px;

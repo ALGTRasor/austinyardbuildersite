@@ -293,6 +293,47 @@ if (window.localisation.tryGetFromQuery() !== true)
 
 
 
+class Config
+{
+	static async Load()
+	{
+		const rgx_newlines = /[\r\n]+/g;
+		const rgx_config_line = /(?:(\w+)\:)?([^\s]+)\s+(.+)/;
+		const valid_line = _ => typeof _ === 'string' && _.length > 0 && _.startsWith('##') === false;
+		const filter_lines = _ => _.filter(valid_line);
+		const match_lines = _ => _.map(_ => _.match(rgx_config_line)).filter(Boolean);
+		const extract = _ => { return { name: (_[2] ?? '').toLowerCase(), text: _[3], lang: (_[1] ?? '').toLowerCase() }; };
+
+		let resp = await fetch('resources/plain/config.cfg');
+		let text = await resp.text();
+		Config.lines = match_lines(filter_lines(text.replaceAll(rgx_newlines, '\r').split('\r')));
+		Config.values = Config.lines.map(extract);
+	}
+
+	static TryGetText(name, lang = document.documentElement.getAttribute('lang'))
+	{
+		let val = Config.TryGet(name, lang);
+		if (val) return val.text;
+		return '[MISSING FROM CONFIG: ' + name + ']';
+	}
+
+	static TryGet(name, lang = document.documentElement.getAttribute('lang'))
+	{
+		if (typeof name !== 'string') return;
+		name = name.toLowerCase();
+		if (Array.isArray(Config.values) !== true) return;
+
+		let id = -1;
+		if (typeof lang === 'string') id = Config.values.findIndex(_ => _.name === name && _.lang === lang);
+		if (id < 0) id = Config.values.findIndex(_ => _.name === name);
+		return id > -1 ? Config.values[id] : undefined;
+	}
+}
+
+await Config.Load();
+console.table('AYB Static Site v' + Config.TryGetText('SITE/VERSION'));
+console.table(Config.TryGetText('CONTACT/HOURS'));
+console.table(Config.TryGetText('CONTACT/PHONE'));
 
 
 
@@ -385,7 +426,7 @@ social_icons.forEach(
 
 
 
-export class ImageFader
+class ImageFader
 {
 	fade_duration = 600;
 	load_wait_duration = 500;
@@ -457,7 +498,7 @@ export class ImageFader
 
 
 
-export class SceneBackground
+class SceneBackground
 {
 	static e_root = document.getElementById('body-background-root');
 	static e_img = document.getElementById('body-background-img');
@@ -864,7 +905,7 @@ class Experience
 	{
 		window.header.Collapse();
 		SceneBackground.SetRootOpacity(10);
-		Experience.e_page_root.style.boxShadow = 'none';
+		//Experience.e_page_root.style.boxShadow = 'none';
 		Experience.e_page_root.style.position = 'absolute';
 		Experience.e_page_root.style.width = '100%';
 		Experience.e_page_root.style.height = '100%';
@@ -876,7 +917,7 @@ class Experience
 	{
 		window.header.Expand();
 		SceneBackground.SetRootOpacity(100);
-		Experience.e_page_root.style.boxShadow = '0px 0px 8px #0006';
+		//Experience.e_page_root.style.boxShadow = '0px 0px 8px #0006';
 		Experience.e_page_root.style.position = 'absolute';
 		Experience.e_page_root.style.width = 'fit-content';
 		Experience.e_page_root.style.height = 'fit-content';
